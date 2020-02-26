@@ -13,12 +13,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/docnetwork/express-challenge.git"
+    "url": "git+https://github.com/docnetwork/full-stack-challenge.git"
   },
   "author": "webteam@docnetwork.org",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/docnetwork/express-challenge/issues"
+    "url": "https://github.com/docnetwork/full-stack-challenge/issues"
   },
-  "homepage": "https://github.com/docnetwork/express-challenge#readme"
+  "homepage": "https://github.com/docnetwork/full-stack-challenge#readme"
 }
