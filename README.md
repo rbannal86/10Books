@@ -1,27 +1,3 @@
-## Google Books API ... API
-
-For this challenge you will be creating a rudimentary Express API to query and store results from
-the Google Books API. This is a test of basic NodeJS and back end proficiency.
-
-### Instructions
-- Clone this repository and complete the challenge according to the specifications below.
-- Once finished, email your
-  [patch](https://robots.thoughtbot.com/send-a-patch-to-someone-using-git-format-patch) to
-  jobs+dev@docnetwork.org and we will review your submission. **(Do _Not_ Open A Pull Request)**
-
-### Specifications
- You will need to 
-
-
-
-### Resources
-- NodeJS https://nodejs.org/en/
-- ExpressJS https://expressjs.com/
-- PostgreSQL https://www.postgresql.org/docs/, https://node-postgres.com/
-- Google Books API https://developers.google.com/books/docs/v1/reference/
-- DocNetwork! If you have any questions about the specifications or how to implement something, feel free to reach out to us. It will not count against your final review, and may even end up being a plus.
-
-
 # A Big Stack of Google Books
 
 So you're full stack, huh? Name every stack. Just kidding, we believe ya.
@@ -31,6 +7,23 @@ rudimentary search engine that falls back to Google Books. Your front end will t
 display results. Your back end receives those queries and either returns a cached result (for
 previously submitted queries) or makes a call to the Google Books API.
 
+## Instructions
+- Clone this repository and complete the challenge according to the Requirements below.
+- Once finished, email your [patch](https://robots.thoughtbot.com/send-a-patch-to-someone-using-git-format-patch) to jobs+dev@docnetwork.org and we will review your submission. **Do _not_ open a pull request.**
+
+## Notes
+
+**Design is important.**
+
+Be it API-level or visual, design is important. We value code that's easy to use and maintain. We value
+appealing, user-centric interfaces. We don't value compromise on this topic—show us what you've got!
+
+**You are encouraged (but not required) to use ES6+ JavaScript.**
+
+We use a lot of ES6+ JS at DocNetwork. We will be testing your submission with the latest versions
+of Chrome and Firefox. We'll run your server with Node 10.X (unless otherwise specified). You're
+welcome to use any front end build system that your chosen framework (see requirements) supports so
+long as we can build it easily by following your instructions.
 
 ## Requirements
 - General
@@ -70,6 +63,14 @@ previously submitted queries) or makes a call to the Google Books API.
     your DB. If no existing match is found, continue with the Books API call and return those
     results as usual.
 - Browser
+  - We've included a Vue CLI project as a starter for your front end
+      - Vue is preferred, but you don't have to use it. Other options include:
+        - AngularJS (our legacy framework)
+        - React
+        - Angular
+        - Vanilla JS
+      - You may _not_ use jQuery
+      - If you choose another frameowrk, update the build scripts accordingly
     - There should be a search bar to input a query.
     - The results should be rendered in the results area. You must include these fields (if available for the record):
       - Cover image
@@ -80,22 +81,5 @@ previously submitted queries) or makes a call to the Google Books API.
       - Preview Link ("View on Google Books")
   - Each subsequent query should append or prepend its results to the results area.
   - There must be no duplicates (by Google Books id).
-  - **The results should be visually appealing, styled logically, and fully responsive for mobile devices.**
-  - While you must use the three function stubs provided in `main.js`, this challenge will require
-    you to write some code outside of them.
-  - We've included a Vue CLI project as a starter for your front end.
-    - We use Vue and AngularJS at DocNetwork, but you may use React or Angular for this challenge if preferred
-    - You may _not_ use jQuery
-
-## Instructions
-- Fork this repository and complete the challenge according to the specifications below.
-- Once finished, email your [patch](https://robots.thoughtbot.com/send-a-patch-to-someone-using-git-format-patch) to jobs+dev@docnetwork.org and we will review your submission. **(Do _Not_ Open A Pull Request)**
-
-## Notes
-- **This is a design-oriented challenge.** While your project must be fully functional according to the specs below, we will be paying special attention to your design decisions. Prioritize user experience and show us your style!
-- While not necessary, you may use Vue, AngularJS, or React (in that order of preference) to complete this project if you are more comfortable using a framework.
-- You are encouraged (but not required) to use ES6+ JavaScript. We will be testing your submission with Chrome latest, but we have also included Babel as a dependency of this package. You may transpile and minify `main.js` by running `npm run build`. If you choose to do this, please adjust `index.html` accordingly.
-- All code must be your own. Do not plagarize, copy, or steal code.
-
-## Specifications
-- Research the [Google Books Volume API](https://developers.google.com/books/docs/v1/reference/volumes) to determine how to search for books given a query. You will need to create an [API key](https://developers.google.com/books/docs/v1/using#APIKey).
+  - The results should be visually appealing, styled logically, and fully responsive for mobile
+    devices.
