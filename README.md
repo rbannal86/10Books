@@ -71,14 +71,14 @@ long as we can build it easily by following your instructions.
         - Vanilla JS
       - You may _not_ use jQuery
       - If you choose another frameowrk, update the build scripts accordingly
-    - There should be a search bar to input a query.
-    - The results should be rendered in the results area. You must include these fields (if available for the record):
-      - Cover image
-      - Title
-      - Subtitle
-      - Authors
-      - Description
-      - Preview Link ("View on Google Books")
+  - There should be a search bar to input a query.
+  - The results should be rendered in the results area. You must include these fields (if available for the record):
+    - Cover Image
+    - Title
+    - Subtitle
+    - Authors
+    - Preview Link
+    - Any other information as you see fit
   - Each subsequent query should append or prepend its results to the results area.
   - There must be no duplicates (by Google Books id).
   - The results should be visually appealing, styled logically, and fully responsive for mobile
