@@ -5,11 +5,15 @@ const Search = props => {
   const [search, setSearch] = useState("");
   const [error, setError] = useState("");
 
+  //Handles errors. Mainly prevents a user from inputting an empty string.
+  //Unrenders any error message by removing it from state
   const handleChange = e => {
     if (error !== "") setError("");
     setSearch(e.target.value);
   };
 
+  //Main fetch call. Grabs books data and sends it back to Main, where it gets passed to Results and
+  //Processed through the children components
   const handleSubmit = e => {
     e.preventDefault();
     let url = `http://localhost:8000/api/books/${search}`;
@@ -31,10 +35,13 @@ const Search = props => {
         setSearch("");
       })
       .catch(error => {
+        //Displays any further errors
         console.log(error);
+        setError(error);
       });
   };
 
+  //sets error when user tries to input a blank item
   const handleEmptySubmit = e => {
     e.preventDefault();
     setError("Please Enter A Search Query");
@@ -43,7 +50,6 @@ const Search = props => {
   return (
     <div className="search">
       <form className="search_form">
-        {/* <label className="search_label">Book Search</label> */}
         <input
           className="search_input"
           onChange={e => handleChange(e)}
@@ -52,6 +58,8 @@ const Search = props => {
           value={search}
           aria-label="book search bar"
         />
+        {/* conditional rendering of the submit button to prevent empty
+        searches. */}
         <div className="search_button_bar">
           {search.length === 0 ? (
             <button

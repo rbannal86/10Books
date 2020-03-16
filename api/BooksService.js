@@ -1,22 +1,9 @@
 const dotenv = require("dotenv");
 const axios = require("axios");
+const fsdb = require("./firebase");
 const firebase = require("firebase");
 
 dotenv.config();
-
-const firebaseConfig = {
-  apiKey: process.env.API_KEY,
-  authDomain: process.env.AUTH_DOMAIN,
-  databaseURL: process.env.DATABASE_URL,
-  projectId: process.env.PROJECT_ID,
-  storageBucket: process.env.STORAGE_BUCKET,
-  messagingSenderId: process.env.MESSAGING_SENDER_ID,
-  appId: process.env.APP_ID,
-  measurementId: process.env.MEASUREMENT_ID
-};
-
-firebase.initializeApp(firebaseConfig);
-const fsdb = firebase.firestore();
 
 const BooksService = {
   async parseData(data) {
@@ -46,7 +33,6 @@ const BooksService = {
     }
   },
   async checkGoogle(search) {
-    console.log("checking google");
     let url = "https://www.googleapis.com/books/v1/volumes";
     const options = {
       method: "get",
@@ -61,7 +47,6 @@ const BooksService = {
     return await axios(options);
   },
   async checkFsdb(search) {
-    console.log("checking firestore");
     const doc = await fsdb.doc(`searches/${search}`).get();
     let results = [];
     const fsData = doc.data();
@@ -72,7 +57,6 @@ const BooksService = {
         results.push(bookData);
       });
       return Promise.all(results).then(results => {
-        console.log(results);
         return results;
       });
     }
@@ -104,7 +88,6 @@ const BooksService = {
     return bookIds;
   },
   async createSearchDoc(search, bookIds) {
-    console.log("creating search doc");
     await fsdb
       .collection("searches")
       .doc(search)
@@ -112,7 +95,6 @@ const BooksService = {
         created: firebase.firestore.Timestamp.now(),
         results: bookIds
       })
-      .then(() => console.log(`document ${search} created!`))
       .catch(error => console.log(error));
   },
   async addToFirestore(data, search) {

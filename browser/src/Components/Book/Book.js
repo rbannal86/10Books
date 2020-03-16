@@ -15,8 +15,13 @@ const Book = props => {
       return <li key={index}>{author}</li>;
     });
   };
+
+  //work around for empty results: the book will receive a 'title' with 'No Results Found'
+  //and display only that
   if (props.book.title === "No Results Found")
     return <h4>{props.book.title}</h4>;
+  //more conditional rendering, taking into consideration more incomplete records or books
+  //without subtitles
   else
     return (
       <div>
@@ -42,6 +47,7 @@ const Book = props => {
             ) : (
               <></>
             )}
+            {/*Button container. All books returned from GoogleBooks should have a Link*/}
             <div className="book_buttons">
               <div className="book_buttons_container">
                 <button className="book_preview_link_button">

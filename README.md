@@ -1,85 +1,27 @@
-# A Big Stack of Google Books
+## Hello!
 
-So you're full stack, huh? Name every stack. Just kidding, we believe ya.
+### My name is Alex Bannow
 
-This challenge is an opportunity to show off your skills across the entire stack. You'll build a
-rudimentary search engine that falls back to Google Books. Your front end will take in queries and
-display results. Your back end receives those queries and either returns a cached result (for
-previously submitted queries) or makes a call to the Google Books API.
+##### This is my submission for the full-stack challenge at DocNetwork
 
-## Instructions
-- Clone this repository and complete the challenge according to the Requirements below.
-- Once finished, email your [patch](https://robots.thoughtbot.com/send-a-patch-to-someone-using-git-format-patch) to jobs+dev@docnetwork.org and we will review your submission. **Do _not_ open a pull request.**
+A few things for getting started:
 
-## Notes
+1. npm install (You guys are professionals, so this is obvious).
+2. The .env file needs to be created and filled out with the correct information. I will include the information for all of the (currently blank) firestore stuff in an email. A Google API KEY should also be included. The format can be found in the example.env file.
+3. npm run test to run a few tests on the backend
+4. If that's all working, npm run dev or npm run start to get the server up and running. It should be on localhost:8000.
+5. Once that's up, you can run the Cypress integration tests using npm cypress:open. It might take a minute to get going. Click on book_spec.js and it should automatically start.
+6. Once that's all working correctly, you can open the React App using npm start.
+7. You can view the Firestore database at: https://dn-books.firebaseio.com
 
-**Design is important.**
+##### A Little Bit About The Project
 
-Be it API-level or visual, design is important. We value code that's easy to use and maintain. We value
-appealing, user-centric interfaces. We don't value compromise on this topic—show us what you've got!
+I decided to use express and axios for hooking up the backend. Database-wise, I went with Firestore. I thought that the potentially large amount of data, and fairly simple objects, would make a good pairing with Firestore. And it's incredibly easy to query.
 
-**You are encouraged (but not required) to use ES6+ JavaScript.**
+Frontend-wise, I went with React. That's the framework I know best. My next project will be learning Vue, but I'm very comfortable with React. All of the components are functional, which makes for a much cleaner presentation code-wise.
 
-We use a lot of ES6+ JS at DocNetwork. We will be testing your submission with the latest versions
-of Chrome and Firefox. We'll run your server with Node 10.X (unless otherwise specified). You're
-welcome to use any front end build system that your chosen framework (see requirements) supports so
-long as we can build it easily by following your instructions.
+I decided to hard-limit the number of books to ten. GoogleBooks allows for up to 40 books to return in a query. While it would be nice to have all of that data, I thought that, with my UI design, an overload of books would make for a cluttered presentation. One thing I would like to include in the future is a limited return with the first GoogleBooks query, but a script that activates and pulls in all of the books for that search. Then, a user would be able to cycle through the book information via the Firestore database. Another thing to include in the future would be a check on the date created for searches in the Firestore database and update the books if the date is stale.
 
-## Requirements
-- General
-  - All code must be your own. Do not plagiarize, copy, or steal code.
-  - Research the [Google Books Volume
-    API](https://developers.google.com/books/docs/v1/reference/volumes) to determine how to search
-    for books given a query.
-  - Create an [API key](https://developers.google.com/books/docs/v1/using#APIKey). Keys are not
-    required for making requests to the Google API, but supporting them is required for this
-    challenge.
-    - Security is important, so don't send us your Books API key! The key should be loaded in
-      through an external file that is not included in your patch.
-  - Include instructions for a reviewer to set up and use your application. This could be scripts,
-    migration files, or just plain text describing the schema and required steps to get everything
-    running.
-- API
-  - Must use the `express` server framework (included)
-  - Must use a database of some type
-    - We've included the `pg` package, but you can use any SQL or NoSQL database engine.
-  - Implement an API route that accepts a search query, passes that along to the Books API (using a
-    utility such as [https](https://nodejs.org/api/https.html),
-    [axios](https://www.npmjs.com/package/axios), or
-    [request](https://www.npmjs.com/package/request) to name a few), and responds with a collection
-    of book results in a JSON format that includes the following details:
-    - Title
-    - Subtitle
-    - Authors
-    - Description (First 140 characters)
-    - Categories
-    - Publisher
-    - Published Date
-    - Preview Link
-    - Cover Image (URL)
-  - Each query should store the search query and associated responses. Entries should include all of
-    the above information as well as a timestamp of when the entry was created.
-  - When a search is run using a query that's already stored in your DB, return the results from
-    your DB. If no existing match is found, continue with the Books API call and return those
-    results as usual.
-- Browser
-  - We've included a Vue CLI project as a starter for your front end
-      - Vue is preferred, but you don't have to use it. Other options include:
-        - AngularJS (our legacy framework)
-        - React
-        - Angular
-        - Vanilla JS
-      - You may _not_ use jQuery
-      - If you choose another frameowrk, update the build scripts accordingly
-  - There should be a search bar to input a query.
-  - The results should be rendered in the results area. You must include these fields (if available for the record):
-    - Cover Image
-    - Title
-    - Subtitle
-    - Authors
-    - Preview Link
-    - Any other information as you see fit
-  - Each subsequent query should append or prepend its results to the results area.
-  - There must be no duplicates (by Google Books id).
-  - The results should be visually appealing, styled logically, and fully responsive for mobile
-    devices.
+I really enjoyed undertaking this project. It helped me start learning axios and cypress. Cypress was especially enjoyable to work with.
+
+Thanks for the opportunity and I look forward to any feedback!

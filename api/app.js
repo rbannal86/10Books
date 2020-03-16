@@ -7,6 +7,10 @@ const app = express();
 
 app.use(cors());
 
+app.get("/", (req, res) => {
+  res.send("Hello!");
+});
+
 app.use("/api/books", BooksRouter);
 
 module.exports = app;
