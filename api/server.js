@@ -1,12 +1,17 @@
-'use strict';
+"use strict";
 
-const express = require('express');
-const app     = express();
-const PORT    = 8000;
-const { Client, Pool } = require('pg');
+const knex = require("knex");
+const app = require("./app");
+const { PORT, DATABASE_URL } = require("./config");
+require("dotenv").config();
 
-// implement your gbooks functionality and route(s) here!
+const db = knex({
+  client: "pg",
+  connection: DATABASE_URL
+});
 
-app.listen(PORT);
+app.set("db", db);
 
-console.log("Listening on port:", PORT);
+app.listen(PORT, () => {
+  console.log(`Server listening at http://localhost:${PORT}`);
+});
